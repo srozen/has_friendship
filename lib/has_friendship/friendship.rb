@@ -11,6 +11,10 @@ module HasFriendship
         attr[:status] = status
       end
 
+      if message
+         attr[:message] = message
+      end
+
       attr
     end
 
