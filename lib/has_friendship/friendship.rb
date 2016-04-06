@@ -1,6 +1,6 @@
 module HasFriendship
   class Friendship < ActiveRecord::Base
-    def self.relation_attributes(one, other, status: nil)
+    def self.relation_attributes(one, other, status: nil, message: nil)
       attr = {
         friendable_id: one.id,
         friendable_type: one.class.base_class.name,

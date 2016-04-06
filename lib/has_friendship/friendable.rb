@@ -44,7 +44,7 @@ module HasFriendship
         unless self == friend || HasFriendship::Friendship.exist?(self, friend)
           transaction do
             HasFriendship::Friendship.create_relation(self, friend, status: 'pending')
-            HasFriendship::Friendship.create_relation(friend, self, status: 'requested')
+            HasFriendship::Friendship.create_relation(friend, self, status: 'requested', message: message)
           end
         end
       end
