@@ -12,8 +12,7 @@ module HasFriendship
 
         has_many :blocked_friends,
                   -> { where friendships: { status: 'blocked' } },
-                  through: :friendships,
-                  source: :friend
+                  through: :friendships, source: :friend
 
         has_many :friends,
                   -> { where friendships: { status: 'accepted' } },
@@ -40,7 +39,7 @@ module HasFriendship
 
     module InstanceMethods
 
-      def friend_request(friend)
+      def friend_request(friend, message = nil)
         unless self == friend || HasFriendship::Friendship.exist?(self, friend)
           transaction do
             HasFriendship::Friendship.create_relation(self, friend, status: 'pending')

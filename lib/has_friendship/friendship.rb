@@ -12,7 +12,7 @@ module HasFriendship
       end
 
       if message
-         attr[:message] = message
+        attr[:message] = message
       end
 
       attr
